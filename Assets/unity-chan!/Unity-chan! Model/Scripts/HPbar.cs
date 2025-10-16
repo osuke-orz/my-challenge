@@ -34,12 +34,20 @@ public class HPbar : MonoBehaviour
     }
     void LateUpdate()
     {
-        if (target != null)
         {
+            if (target == null)
+            {
+                //Debug.LogWarning("target ‚ªİ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñI");
+                return;
+            }
+
+            Debug.Log("target ‚ÌˆÊ’u: " + target.name);
+
+            Vector3 offset = rotation * new Vector3(0, 2, 0);
+
             transform.position = target.position + offset;
-            transform.forward = Camera.main.transform.forward; // ƒJƒƒ‰‚ÉŒü‚¯‚é
+
         }
-        Debug.Log(transform.position);
     }
 
 }
