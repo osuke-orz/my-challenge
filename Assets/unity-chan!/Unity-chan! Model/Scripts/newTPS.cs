@@ -49,7 +49,7 @@ public class newTPS : MonoBehaviour
                 return;
             }
 
-            Debug.Log("target �̈ʒu: " + target.name);
+            //Debug.Log("target �̈ʒu: " + target.name);
             float mouseX = Input.GetAxis("Mouse X") * mouseSens;
             float mouseY = Input.GetAxis("Mouse Y") * mouseSens;
             yaw += mouseX;

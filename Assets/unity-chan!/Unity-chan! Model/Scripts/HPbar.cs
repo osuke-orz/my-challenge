@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class HPbar : MonoBehaviour
@@ -37,15 +38,13 @@ public class HPbar : MonoBehaviour
         {
             if (target == null)
             {
-                //Debug.LogWarning("target が設定されていません！");
+                Debug.LogWarning("target が設定されていません！");
                 return;
             }
 
-            Debug.Log("target の位置: " + target.name);
+            Debug.Log(transform.name+"の位置: " + transform.position);
 
             transform.position = target.position + offset;
-
         }
     }
-
 }
