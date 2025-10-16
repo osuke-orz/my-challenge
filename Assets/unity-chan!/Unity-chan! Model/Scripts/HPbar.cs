@@ -43,8 +43,6 @@ public class HPbar : MonoBehaviour
 
             Debug.Log("target �̈ʒu: " + target.name);
 
-            Vector3 offset = rotation * new Vector3(0, 2, 0);
-
             transform.position = target.position + offset;
 
         }

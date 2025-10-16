@@ -127,7 +127,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5134291728048917894, guid: 4b78454372950e64ea6d298327c5cbb8, type: 3}
   m_PrefabInstance: {fileID: 8644151095365065878}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &104768309
+--- !u!114 &104768305
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1047,6 +1047,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3930228028966794738, guid: 4b78454372950e64ea6d298327c5cbb8, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5134291728048917894, guid: 4b78454372950e64ea6d298327c5cbb8, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -1139,13 +1143,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4775692296163401150, guid: 4b78454372950e64ea6d298327c5cbb8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5134291728048917894, guid: 4b78454372950e64ea6d298327c5cbb8, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 104768309}
+      addedObject: {fileID: 104768305}
   m_SourcePrefab: {fileID: 100100000, guid: 4b78454372950e64ea6d298327c5cbb8, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
