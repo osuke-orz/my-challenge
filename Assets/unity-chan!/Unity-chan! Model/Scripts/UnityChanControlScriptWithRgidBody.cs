@@ -6,6 +6,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Security.Cryptography;
+using Photon.Pun;
 
 namespace UnityChan
 {
@@ -48,8 +49,8 @@ namespace UnityChan
 		private Animator anim;							// キャラにアタッチされるアニメーターへの参照
 		private AnimatorStateInfo currentBaseState;			// base layerで使われる、アニメーターの現在の状態の参照
 
-		private GameObject cameraObject;	// メインカメラへの参照
-		
+		private GameObject cameraObject;    // メインカメラへの参照
+		private PhotonView pv;
 		// アニメーター各ステートへの参照
 		static int idleState = Animator.StringToHash ("Base Layer.Idle");
 		static int locoState = Animator.StringToHash ("Base Layer.Locomotion");
@@ -64,6 +65,7 @@ namespace UnityChan
 			// CapsuleColliderコンポーネントを取得する（カプセル型コリジョン）
 			col = GetComponent<CapsuleCollider> ();
 			rb = GetComponent<Rigidbody> ();
+			pv = GetComponent<PhotonView> ();
 			//メインカメラを取得する
 			cameraObject = GameObject.FindWithTag ("MainCamera");
 			// CapsuleColliderコンポーネントのHeight、Centerの初期値を保存する
@@ -71,22 +73,25 @@ namespace UnityChan
 			orgVectColCenter = col.center;
 		}
 
-		void Update()
-		{
+        void Update()
+        {
+            if (!pv.IsMine) return; // 自分のキャラだけ処理する
+
             if (Input.GetButtonDown("Jump"))
             {
                 jumpRequested = true;
-			}
-			Vector3 cameraForward = cameraObject.transform.forward;
-			cameraForward.y = 0f;
-			cameraForward.Normalize();
+            }
 
-			transform.forward = cameraForward;
+            Vector3 cameraForward = cameraObject.transform.forward;
+            cameraForward.y = 0f;
+            cameraForward.Normalize();
+
+            transform.forward = cameraForward;
         }
-	
-	
-		// 以下、メイン処理.リジッドボディと絡めるので、FixedUpdate内で処理を行う.
-		void FixedUpdate ()
+
+
+        // 以下、メイン処理.リジッドボディと絡めるので、FixedUpdate内で処理を行う.
+        void FixedUpdate ()
 		{
 			if(!photonView.IsMine)
 			{
