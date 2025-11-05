@@ -15,10 +15,44 @@ namespace UnityChan
 	[RequireComponent(typeof(CapsuleCollider))]
 	[RequireComponent(typeof(Rigidbody))]
 
+
 	public class UnityChanControlScriptWithRgidBody : Photon.Pun.MonoBehaviourPun
 	{
 
-		public float animSpeed = 1.5f;				// アニメーション再生速度設定
+        [PunRPC]
+        void AttachWeapon(int weaponViewID)
+        {
+            PhotonView weaponView = PhotonView.Find(weaponViewID);
+
+            // プレイヤーの手のTransformを探す
+            Transform handTransform = transform.Find(
+
+             "Character1_Reference/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_RightShoulder/Character1_RightArm/Character1_RightForeArm/Character1_RightHand"
+            );
+
+            // 武器を手にアタッチ
+            weaponView.transform.SetParent(handTransform);
+            weaponView.transform.localPosition = Vector3.zero;
+            weaponView.transform.localRotation = Quaternion.identity;
+        }
+        [PunRPC]
+        void AttachHPbar(int viewID)
+        {
+            PhotonView weaponView = PhotonView.Find(viewID);
+
+            // プレイヤーのTransformを探す 用編集　randommatchmakerにCanvasインスタンスの生成コードを追加
+            Transform handTransform = transform.Find(
+             "Character1_Reference/Character1_Hips/Character1_Spine/Character1_Spine1/Character1_Spine2/Character1_RightShoulder/Character1_RightArm/Character1_RightForeArm/Character1_RightHand"
+            );
+
+            // 武器を手にアタッチ
+            weaponView.transform.SetParent(handTransform);
+            weaponView.transform.localPosition = Vector3.zero;
+            weaponView.transform.localRotation = Quaternion.identity;
+        }
+
+
+        public float animSpeed = 1.5f;				// アニメーション再生速度設定
 		public float lookSmoother = 3.0f;			// a smoothing setting for camera motion
 		public bool useCurves = true;				// Mecanimでカーブ調整を使うか設定する
 		// このスイッチが入っていないとカーブは使われない
@@ -284,4 +318,5 @@ namespace UnityChan
 			col.center = orgVectColCenter;
 		}
 	}
+
 }

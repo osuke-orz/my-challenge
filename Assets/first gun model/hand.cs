@@ -25,7 +25,7 @@ public class hand : MonoBehaviour
                 if (pv != null && pv.IsMine)
                 {
                     target = player.transform;
-                    Debug.Log("target を設定: " + target.name);
+                    //Debug.Log("target を設定: " + target.name);
                     yield break;
                 }
             }
@@ -37,11 +37,11 @@ public class hand : MonoBehaviour
         {
             if (target == null)
             {
-                Debug.LogWarning("target が設定されていません！");
+                //Debug.LogWarning("target が設定されていません！");
                 return;
             }
 
-            Debug.Log(transform.name + "の位置: " + transform.position);
+            //Debug.Log(transform.name + "の位置: " + transform.position);
 
             transform.position = target.position + offset;
         }

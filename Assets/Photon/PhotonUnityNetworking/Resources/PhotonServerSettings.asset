@@ -39,6 +39,9 @@ MonoBehaviour:
   - DestroySpaceship
   - Fire
   - RespawnSpaceship
+  - <OnJoinedRoom>g__AttachWeapon|6_0
+  - AttachWeapon
+  - AttachHPbar
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 0
